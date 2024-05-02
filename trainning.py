@@ -69,27 +69,27 @@ for image_file in image_files_dogs_train:
     Y_train.append(1)
 
 
-for image_file in image_files_cats_test:
-    # Tạo đường dẫn đầy đủ đến tệp ảnh
-    image_path = os.path.join(path_cats_test, image_file)
-
-    # Đọc ảnh từ tệp ảnh
-    image = cv2.imread(image_path)
-
-    image = cv2.resize(image, (128, 128))
-
-    # plt.imshow(image)
-    # plt.axis('off')  # Ẩn trục đồng bộ của đồ thị
-    # plt.show()
-
-    # Chuyển đổi ảnh sang định dạng số (ví dụ: grayscale)
-    grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    grayscale_image = np.expand_dims(grayscale_image, axis=-1)
-
-
-    # Thêm ảnh vào danh sách
-    X_test.append(grayscale_image)
-    Y_test.append(0)
+# for image_file in image_files_cats_test:
+#     # Tạo đường dẫn đầy đủ đến tệp ảnh
+#     image_path = os.path.join(path_cats_test, image_file)
+#
+#     # Đọc ảnh từ tệp ảnh
+#     image = cv2.imread(image_path)
+#
+#     image = cv2.resize(image, (128, 128))
+#
+#     # plt.imshow(image)
+#     # plt.axis('off')  # Ẩn trục đồng bộ của đồ thị
+#     # plt.show()
+#
+#     # Chuyển đổi ảnh sang định dạng số (ví dụ: grayscale)
+#     grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+#     grayscale_image = np.expand_dims(grayscale_image, axis=-1)
+#
+#
+#     # Thêm ảnh vào danh sách
+#     X_test.append(grayscale_image)
+#     Y_test.append(0)
 
 
 for image_file in image_files_dogs_test:
