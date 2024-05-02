@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 # path_dogs_test = "./data/dogs_test2"
 # path_cats_test = "./data/cats_test2"
 
-path_cat = "./data/panda"
+path_panda = "./data/panda"
 path_dog = "./data/dogs2"
 
 # Danh sách tên tệp ảnh trong thư mục
@@ -22,7 +22,7 @@ path_dog = "./data/dogs2"
 # image_files_dogs_test = os.listdir(path_dogs_test)
 # image_files_cats_test = os.listdir(path_cats_test)
 
-image_cat = os.listdir(path_cat)
+image_panda = os.listdir(path_panda)
 image_dog = os.listdir(path_dog)
 # print(image_files)
 
@@ -129,26 +129,26 @@ Y = []
 
 # Chuyển đổi danh sách thành mảng numpy
 
-# for image_file in image_cat:
-#     # Tạo đường dẫn đầy đủ đến tệp ảnh
-#     image_path = os.path.join(path_cat, image_file)
-#
-#     # Đọc ảnh từ tệp ảnh
-#     image = cv2.imread(image_path)
-#
-#     image = cv2.resize(image, (128, 128))
-#
-#     # plt.imshow(image)
-#     # plt.axis('off')  # Ẩn trục đồng bộ của đồ thị
-#     # plt.show()
-#
-#     # Chuyển đổi ảnh sang định dạng số (ví dụ: grayscale)
-#     grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-#     grayscale_image = np.expand_dims(grayscale_image, axis=-1)
-#
-#     # Thêm ảnh vào danh sách
-#     X.append(grayscale_image)
-#     Y.append(0)
+for image_file in image_panda:
+    # Tạo đường dẫn đầy đủ đến tệp ảnh
+    image_path = os.path.join(path_panda, image_file)
+
+    # Đọc ảnh từ tệp ảnh
+    image = cv2.imread(image_path)
+
+    image = cv2.resize(image, (128, 128))
+
+    # plt.imshow(image)
+    # plt.axis('off')  # Ẩn trục đồng bộ của đồ thị
+    # plt.show()
+
+    # Chuyển đổi ảnh sang định dạng số (ví dụ: grayscale)
+    grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    grayscale_image = np.expand_dims(grayscale_image, axis=-1)
+
+    # Thêm ảnh vào danh sách
+    X.append(grayscale_image)
+    Y.append(0)
 
 for image_file in image_dog:
     # Tạo đường dẫn đầy đủ đến tệp ảnh
@@ -221,7 +221,7 @@ model.add(Dense(2, activation='softmax'))
 
 model.compile(loss = 'sparse_categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
-model.fit(X_train, Y_train, epochs=20, validation_data=(X_test, Y_test))
+model.fit(X_train, Y_train, epochs=5, validation_data=(X_test, Y_test))
 # model.fit(X_train, Y_train, epochs = 20, batch_size = 128)
 
 
